@@ -5,7 +5,7 @@
  </div>
 
 # Teste para vaga de front-end no Magazord.com.br
-Este repositório tem como fim testar os candidatos para vaga de React developer na empresa [Magazord](https://magazord.com.br).
+Este repositório tem como fim testar os candidatos para vaga de React Developer na empresa [Magazord](https://magazord.com.br).
 > Para esta vaga buscamos alguém apaixonado por React e todo o ecossistema Javascript
 
 
@@ -14,11 +14,11 @@ Este repositório tem como fim testar os candidatos para vaga de React developer
 - Utilização do [Zustand](https://github.com/pmndrs/zustand) para controle de estados globais
 - Utilize React ou Next
 - Utilize TypeScript
-- Utilize uma bilbioteca de cache como swr ou react-query
-- Utlize styled-components
+- Utilize uma biblioteca de cache como swr ou react-query
+- Utilize styled-components
 - Publique sua aplicação em uma plataforma de deploy rápido ([vercel](https://vercel.com/)/[heroku](https://www.heroku.com/)/[netlify](https://www.netlify.com/)/outros)
 
-## O precisa ser feito?
+## O que precisa ser feito?
 - Carregar os dados de forma dinâmica utilizando a [API do GitHub](https://developer.github.com/v3/)
 - Carregar os repositórios do usuário inicialmente
 - Carregar os favoritos do usuário ao acessar a tab **Starred**
@@ -33,7 +33,7 @@ Este repositório tem como fim testar os candidatos para vaga de React developer
 - Inclua um arquivo *README* que possua:
   - desafios/problemas com os quais você se deparou durante a execução do projeto.
   - maneiras através das quais você pode melhorar a aplicação, seja em performance, estrutura ou padrões. 
-  - todas as intruções necessárias para que qualquer pessoa consiga rodar sua aplicação sem maiores problemas.
+  - todas as instruções necessárias para que qualquer pessoa consiga rodar sua aplicação sem maiores problemas.
 
   
 ### Critérios de avaliação 
@@ -80,3 +80,4 @@ https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0
 
 ## Envio do teste
 * Suba o repositório no seu Github e envie o link diretamente para o seu recrutador. Obs.: Não serão aceitos alterações após o envio
+
