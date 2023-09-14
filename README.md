@@ -10,9 +10,8 @@ Este repositório tem como fim testar os candidatos para vaga de React Developer
 
 
 ## Requisitos
-- [Vite](https://vitejs.dev/guide/)
 - Utilização do [Zustand](https://github.com/pmndrs/zustand) para controle de estados globais
-- Utilize React ou Next
+- Utilize [(Vite)](https://vitejs.dev/guide/) React ou Next
 - Utilize TypeScript
 - Utilize uma biblioteca de cache como swr ou react-query
 - Utilize styled-components
@@ -56,8 +55,7 @@ Este repositório tem como fim testar os candidatos para vaga de React Developer
 #### Documentação
 - O código foi entregue com um arquivo de _README_ claro de como instalar e codificar no projeto?
 - O código possui comentários pertinentes?
-- O código está em algum controle de versão?
-- Os _commits_ são pequenos e consistentes?
+- Os _commits_ são consistentes?
 - As mensagens de _commit_ são claras?
   
 #### Dicas
