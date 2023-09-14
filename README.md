@@ -23,10 +23,10 @@ Este repositório tem como fim testar os candidatos para vaga de React Developer
 - Carregar os repositórios do usuário inicialmente
 - Carregar os favoritos do usuário ao acessar a tab **Starred**
 - Fazer uma busca ao digitar e fazer o submit com "Enter"
-- Ao clicar em um repositório trazer as informações deles, como acontece nesse [neste exemplo](https://github-explorer.gabrielcordeiro.dev/repository/facebook/react)
+- Ao clicar em um repositório trazer as informações deles, como acontece [neste exemplo](https://github-explorer.gabrielcordeiro.dev/repository/facebook/react)
 
 
-## O que nós vamos avaliar
+## O que nós vamos avaliar?
 
 - Vamos avaliar a qualidade do código, legibilidade e a quantidade de funcionalidades implementadas.
 - Você é livre para tomar as decisões técnicas com as quais você se sente mais confortável. Apenas esteja pronto para explicar as razões que fundamentaram suas escolhas =]
