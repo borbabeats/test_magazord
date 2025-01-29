@@ -14,7 +14,7 @@ Este repositório tem como fim testar os candidatos para vaga de React Developer
 - Utilize [(Vite)](https://vitejs.dev/guide/) React ou Next
 - Utilize TypeScript
 - Utilize uma biblioteca de cache como swr ou react-query
-- Utilize styled-components
+- Utilize TaiwindCSS
 - Publique sua aplicação em uma plataforma de deploy rápido ([vercel](https://vercel.com/)/[heroku](https://www.heroku.com/)/[netlify](https://www.netlify.com/)/outros)
 
 ## O que precisa ser feito?
