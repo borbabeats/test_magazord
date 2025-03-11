@@ -40,7 +40,6 @@ Este repositório tem como fim testar os candidatos para vaga de React Developer
 
 
 #### Entrega
-- Será avaliado o código fonte, estrutura do projeto e aplicação dos pré-requisitos
 - O Layout deve ser fidedigno ao que é proposto no link do [Figma](https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1)
 - Não serão aceitos plágios ou códigos feitos com IA(sim, podemos identificar isso)
 
