@@ -13,7 +13,7 @@ Este repositório tem como fim testar os candidatos para vaga de React Developer
 - Utilização do [Zustand](https://github.com/pmndrs/zustand) para controle de estados globais
 - Utilize [(Vite)](https://vitejs.dev/guide/) React ou Next
 - Utilize TypeScript
-- Utilize uma biblioteca de cache como swr ou react-query
+- Utilize uma biblioteca de cache como o react-query
 - Utilize TaiwindCSS
 - Publique sua aplicação em uma plataforma de deploy rápido ([vercel](https://vercel.com/)/[heroku](https://www.heroku.com/)/[netlify](https://www.netlify.com/)/outros)
 
@@ -23,6 +23,7 @@ Este repositório tem como fim testar os candidatos para vaga de React Developer
 - Carregar os favoritos do usuário ao acessar a tab **Starred**
 - Fazer uma busca ao digitar e fazer o submit com "Enter"
 - Ao clicar em um repositório trazer as informações deles, como acontece [neste exemplo](https://github-explorer.gabrielcordeiro.dev/repository/facebook/react)
+- Aplicar filtros nos repositórios
 
 
 ## O que nós vamos avaliar?
@@ -39,10 +40,9 @@ Este repositório tem como fim testar os candidatos para vaga de React Developer
 
 
 #### Entrega
-- O resultado final está completo para ser executado?
-- O resultado final atende ao que se propõe fazer?
-- O resultado final atende totalmente aos requisitos propostos?
-- O resultado final é visualmente elegante?
+- Será avaliado o código fonte, estrutura do projeto e aplicação dos pré-requisitos
+- O Layout deve ser fidedigno ao que é proposto no link do [Figma](https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0%3A1)
+- Não serão aceitos plágios ou códigos feitos com IA(sim, podemos identificar isso)
 
 
 
