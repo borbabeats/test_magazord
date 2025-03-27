@@ -78,3 +78,5 @@ https://www.figma.com/file/sf1CmqcEZbUzkeZOA4AUGj/TESTE-FRONT-MAGAZORD?node-id=0
 ## Envio do teste
 * Suba o repositório no seu Github e envie o link diretamente para o seu recrutador. Obs.: Não serão aceitos alterações após o envio
 
+## 
+* Card: Name  Description - star - forks
