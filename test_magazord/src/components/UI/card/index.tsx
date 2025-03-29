@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CardProps } from "./types";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -6,33 +5,27 @@ import { CardActions, Typography } from "@mui/material";
 import { FaStar } from "react-icons/fa";
 import ForkIcon from "@/components/UI/icons/forkIcon";
 
-export default function CardHorizontal({
-  full_name,
-  html_url,
-  description,
-  stargazers_count,
-  forks_count,
-}: CardProps) {
+export default function CardHorizontal({...props}: CardProps) {
   return (
-    <Card className="w-full" style={{ minWidth: "320px", maxWidth: "768px" }}>
+    <Card className="w-full" >
       <CardContent sx={{ height: "100%" }}>
-        <Link href={html_url}>
+        <button>
           {" "}
           <Typography variant="h5" component="div">
-            {full_name}
+            {props.full_name}
           </Typography>
-        </Link>
+        </button>
         <Typography variant="body2" color="text.secondary">
-          {description}
+          {props.description}
         </Typography>
 
         <CardActions>
-          <Link href={html_url} className="flex gap-2">
-            <FaStar /> {stargazers_count}
-          </Link>
-          <Link href={html_url} className="flex gap-2">
-            <ForkIcon /> {forks_count}
-          </Link>
+          <button  className="flex gap-2">
+            <FaStar /> {props.stargazers_count}
+          </button>
+          <button className="flex gap-2">
+            <ForkIcon /> {props.forks_count}
+          </button>
         </CardActions>
       </CardContent>
     </Card>

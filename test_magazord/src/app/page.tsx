@@ -1,12 +1,13 @@
-import Homepage from "@/layout/homepage"
-import Header from "@/components/UI/header"
-import { Suspense } from "react"
+'use client';
 
-export default function Home() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Header title="Profile" />
-      <Homepage />
-    </Suspense>
-  )
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Start() {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/home")
+  }, [router])
+
+  return null
 }

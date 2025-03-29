@@ -1,13 +1,21 @@
 import ListMain from "@/components/list_main";
 import Sidebar from "@/components/sidebar";
+import Container from "@mui/material/Container";
 
 export default async function Home() {
   return (
-    <div className="flex justify-center">
-      <div className="flex  gap-4">
+      <Container 
+      sx={{ display: 'flex', 
+            flexDirection: { 
+              xs: 'column', 
+              md: 'row' 
+              },
+          gap: 4, 
+          justifyContent: 'space-between', 
+          alignItems: 'flex-start', 
+        }} >
         <Sidebar />
         <ListMain />
-      </div>
-    </div>
+      </Container>
   );
 }

@@ -2,7 +2,7 @@
 
 :root {
   --background: #ededed;
-  --foreground: #171717;
+  --foreground: #262626;
 }
 
 @theme inline {
@@ -23,4 +23,33 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Roboto,  sans-serif;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 60px;
+}
+
+h2 {
+  font-size: 3rem;
+  line-height: 56px;
+}
+
+h3 {
+  font-size: 2.5rem;
+  line-height: 48px;
+}
+
+h4 {
+  font-size: 1.4rem;
+  line-height: 24px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 18px;
+}
+
+a {
+  color: #0587FF;
 }
