@@ -24,6 +24,7 @@ Projeto disponível em: https://test-magazord.vercel.app/
   - Busca os reposiórios publicos do usuário e exibe uma lista com seus nomes, stars e forks.
   - Apresenta 2 botões que filtram a lista para exibir todos os repositórios ou os repositórios marcados como favoritos.
   - Tem um campo de inserção para busca de repositórios por nome, sem precisar ser o nome completo. O filtro acontece após apertar "Enter". Para exibir todos novamente,  limpar o  campo e apertar Enter novamente
+  - Também há um botão do tipo select que exibe as linguagens dos repositórios, filtrando assim a lista por linguagem
   - Ao clicar em um dos projetos, somos redirecionados para uma nova página.
 
   ### Detalhes do repositório 
