@@ -3,4 +3,5 @@ export interface CardProps {
     description?: string | null;
     stargazers_count?: number | undefined;
     forks_count?: number | undefined;
+    language?: string | undefined | null
 }

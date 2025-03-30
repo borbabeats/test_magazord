@@ -2,20 +2,25 @@
 
 import useStore from "@/store/stateStore";
 import CardHorizontal from "../UI/card";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Loading from "@/components/UI/loading";
 import { Repo } from "@/store/types";
 import Chip from "@mui/material/Chip";
 import RepoIcon from "@/components/UI/icons/repoIcon";
 import StarIcon from "../UI/icons/starIcon";
-import { TextField } from "@mui/material";
+import { ListItem, ListItemText, MenuItem, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useReposQuery } from "@/hook/useInfos";
+import Button from "../UI/button";
+import ChevronIcon from "../UI/icons/chevronIcon";
 
 export default function ListMain() {
   const { repos, loading, error, setRepos, setLoading, setError } = useStore();
   const [filteredRepos, setFilteredRepos] = useState<Repo[]>(repos);
   const [inputValue, setInputValue] = useState<string>("");
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("");
+  const [isLanguageListOpen, setIsLanguageListOpen] = useState(false);
+  const languageListRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   const { data: reposData, isLoading, error: queryError } = useReposQuery();
@@ -36,6 +41,15 @@ export default function ListMain() {
     setFilteredRepos(repos);
   }, [repos]);
 
+  useEffect(() => {
+    if (selectedLanguage) {
+      filterRepos((repo) => repo.language === selectedLanguage);
+    } else {
+      setFilteredRepos(repos);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLanguage, repos]);
+
   const filterRepos = (filter: (repo: Repo) => boolean) => {
     const filtered = repos.filter(filter);
     setFilteredRepos(filtered);
@@ -54,6 +68,15 @@ export default function ListMain() {
     setInputValue(e.target.value);
   };
 
+  const handleLanguageClick = () => {
+    setIsLanguageListOpen(!isLanguageListOpen);
+  };
+
+  const handleMenuItemClick = (language: string) => {
+    setSelectedLanguage(language);
+    setIsLanguageListOpen(false);
+  };
+
   const handleClick = (id: number) => {
     router.push(`/home/${id}`);
   };
@@ -65,6 +88,8 @@ export default function ListMain() {
   if (error) {
     return <p>{error}</p>;
   }
+
+  const languages = [...new Set(repos.map((repo) => repo.language).filter(Boolean))];
 
   return (
     <div className="flex flex-col gap-4 w-full">
@@ -106,14 +131,32 @@ export default function ListMain() {
         </button>
       </div>
 
-      <TextField
-        id="search-field"
-        label="Search Here"
-        variant="standard"
-        value={inputValue}
-        onChange={handleInputChange}
-        onKeyDown={handleSearch}
-      />
+      <div className="flex flex-col gap-4  md:flex-row">
+        <TextField
+        className="w-full"
+          id="search-field"
+          label="Search Here"
+          variant="standard"
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyDown={handleSearch}
+        />
+        <div className="relative">
+        <Button label={selectedLanguage || "Language"} icon={<ChevronIcon />} onClick={handleLanguageClick}  />
+        {isLanguageListOpen && (
+          <div ref={languageListRef} className="absolute left-0 z-10 mt-2 bg-white rounded-md shadow-lg w-[145px]">
+            <MenuItem key="all" value="" onClick={() => handleMenuItemClick("")}>
+              All
+            </MenuItem>
+            {languages.map((language) => (
+              <ListItem component="li" key={language} value={language ?? ""} onClick={() => handleMenuItemClick(language ?? '')} style={{ cursor: "pointer" }}>
+                <ListItemText primary={language} />
+              </ListItem>
+            ))}
+          </div>
+        )}
+        </div>
+      </div>
 
       {filteredRepos.map((repo: Repo) => (
         <div
@@ -127,6 +170,8 @@ export default function ListMain() {
             description={repo.description}
             stargazers_count={repo.stargazers_count}
             forks_count={repo.forks_count}
+            language={repo.language
+            }
           />
         </div>
       ))}

@@ -32,7 +32,7 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="flex flex-col items-center text-center w-75">
+    <div className="flex flex-col items-center text-center w-75 self-center md:self-start">
       {user && (
         <>
           <Image

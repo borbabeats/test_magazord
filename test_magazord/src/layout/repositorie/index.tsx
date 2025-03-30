@@ -1,12 +1,15 @@
 "use client";
 
 import { RepositorieProps } from "./types";
-import { Container, Alert } from "@mui/material";
+import { Container, Alert, TextField } from "@mui/material";
 import useStore from "@/store/stateStore";
 import CardHorizontal from "@/components/UI/card";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useReposQuery, useRepoDetailsQuery } from "@/hook/useInfos";
 import Loading from "@/components/UI/loading";
+import { Commit } from "@/store/types";
+import Button from "@/components/UI/button";
+import { BsArrowBarLeft } from "react-icons/bs";
 
 export default function Repositorie({ id }: RepositorieProps) {
   const {
@@ -22,7 +25,11 @@ export default function Repositorie({ id }: RepositorieProps) {
     setError,
   } = useStore();
 
-  const { data: reposData, isLoading: reposLoading, error: reposError } = useReposQuery();
+  const {
+    data: reposData,
+    isLoading: reposLoading,
+    error: reposError,
+  } = useReposQuery();
 
   const repo = repos.find((repo) => repo.id === id);
 
@@ -31,6 +38,9 @@ export default function Repositorie({ id }: RepositorieProps) {
     isLoading: detailsLoading,
     error: detailsError,
   } = useRepoDetailsQuery(repo?.name || "");
+
+  const [inputValue, setInputValue] = useState<string>("");
+  const [filteredCommit, setFilteredCommit] = useState<Commit[]>(commits);
 
   useEffect(() => {
     setLoading(reposLoading || detailsLoading);
@@ -51,6 +61,7 @@ export default function Repositorie({ id }: RepositorieProps) {
     if (repoDetails) {
       setCommits(repoDetails.commits);
       setOpenIssues(repoDetails.openIssues);
+      setFilteredCommit(repoDetails.commits);
     }
   }, [
     reposData,
@@ -66,6 +77,28 @@ export default function Repositorie({ id }: RepositorieProps) {
     setError,
   ]);
 
+  useEffect(() => {
+    setFilteredCommit(commits);
+  }, [commits]);
+
+  const filterCommit = (filter: (commit: Commit) => boolean) => {
+    const filtered = commits.filter(filter);
+    setFilteredCommit(filtered);
+  };
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      const value = (e.target as HTMLInputElement).value;
+      filterCommit((commit) =>
+        commit.commit.message.toLowerCase().includes(value.toLowerCase())
+      );
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
   if (!repo) {
     return <p>Repositório não encontrado</p>;
   }
@@ -78,7 +111,6 @@ export default function Repositorie({ id }: RepositorieProps) {
     );
   }
 
-
   if (error) {
     return (
       <Container>
@@ -87,21 +119,60 @@ export default function Repositorie({ id }: RepositorieProps) {
     );
   }
 
+  const backToHome = () => {
+    window.location.href = "/home";
+  };
+
   return (
     <Container>
-      <h1>Repositório: {repo.full_name}</h1>
-      <h3>{repo.description}</h3>
-      <p><strong>Stars:</strong> {repo.stargazers_count}</p>
-      <p><strong>Forks:</strong> {repo.forks_count}</p>
-      <p><strong>Open Issues:</strong> {openIssues.length}</p>
+      <div className="flex flex-col items-start gap-5 my-4">
+        <Button onClick={backToHome} label="Voltar" icon={<BsArrowBarLeft />} />
+        <h1>
+          Informações sobre:{" "}
+          <span className="text-cyan-500">{repo.full_name}</span>
+        </h1>
+        <h4>{repo.description}</h4>
+        <div className="flex flex-row justify-center gap-5">
+          <div className="flex flex-col items-start">
+            <h3 className="text-2xl font-bold text-cyan-500">
+              {repo.stargazers_count}
+            </h3>
+            <p>Stars</p>
+          </div>
+          <div className="flex flex-col items-start">
+            <h3 className="text-2xl font-bold text-cyan-500">
+              {repo.forks_count}
+            </h3>
+            <p>Forks</p>
+          </div>
+          <div className="flex flex-col items-start">
+            <h3 className="text-2xl font-bold text-cyan-500">
+              {openIssues.length}
+            </h3>
+            <p>Open Issues</p>
+          </div>
+        </div>
+      </div>
+
+      <TextField
+      className="w-75"
+        id="search-field"
+        label="Search Here"
+        variant="standard"
+        value={inputValue}
+        onChange={handleInputChange}
+        onKeyDown={handleSearch}
+      />
 
       <h3>Commits:</h3>
-      {commits.map((commit) => (
-        <CardHorizontal
-          key={commit.sha}
-          full_name={commit.commit.message || "Unknown"}
-        />
-      ))}
+      <div className="flex flex-col gap-4 w-full">
+        {filteredCommit.map((commit) => (
+          <CardHorizontal
+            key={commit.sha}
+            full_name={commit.commit.message || "Unknown"}
+          />
+        ))}
+      </div>
 
       <h3>Open Issues:</h3>
       {openIssues.length > 0 ? (

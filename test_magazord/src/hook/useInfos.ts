@@ -19,12 +19,14 @@ const fetchUser = async (): Promise<User> => {
 };
 
 const fetchRepos = async (): Promise<Repo[]> => {
+  const user = await fetchUser();
+  const username = user.login;
   const response = await octokit.request("GET /users/{username}/repos", {
-    username: "borbabeats",
+    username: username ?? '',
     headers: { "X-GitHub-Api-Version": "2022-11-28" },
   });
   return response.data.map((repo: Repo) => ({
-    full_name: repo.full_name,
+    full_name: repo.name,
     id: repo.id,
     name: repo.name,
     description: repo.description || null,
@@ -36,17 +38,20 @@ const fetchRepos = async (): Promise<Repo[]> => {
 };
 
 const fetchRepoDetails = async (repoName: string): Promise<{ commits: Commit[]; openIssues: Issue[] }> => {
+  const user = await fetchUser();
+  const username = user.login;
   const [commitsResponse, issuesResponse] = await Promise.all([
     octokit.request("GET /repos/{owner}/{repo}/commits", {
-      owner: "borbabeats",
+      owner: username ?? '',
       repo: repoName,
     }),
     octokit.request("GET /repos/{owner}/{repo}/issues", {
-      owner: "borbabeats",
+      owner: username ?? '',
       repo: repoName,
     }),
   ]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const commits: Commit[] = commitsResponse.data.map((commit: any) => ({
     sha: commit.sha,
     committer: { name: commit.committer?.name || "Desconhecido" },
