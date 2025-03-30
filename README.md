@@ -2,7 +2,7 @@
 
 Este é o projeto criado para resolver o desafio propos pela Magazord
 
-Projeto disponível em: vercel -=---
+Projeto disponível em: https://test-magazord.vercel.app/
 
 ## Para rodar localmente, execute os seguintes comandos:
 
